@@ -57,7 +57,7 @@ input.placeholder = "enter your Food";
 // Style the container
 container.style.width = "100%";
 container.style.display = "flex";
-container.style.backgroundColor = "black";
+container.style.backgroundColor = "gray";
 document.body.append(container); // Make sure to append container to the document body to make it visible
 
 // Style the navbar

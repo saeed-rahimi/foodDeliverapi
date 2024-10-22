@@ -4,15 +4,12 @@ const container = document.createElement("div");
 const navbar = document.createElement("div");
 const product = document.createElement("div");
 const searchBar = document.createElement("div");
-const boxs=document.createElement("div");
-const boxlist=document.createElement("ul");
-const boxitem=document.createElement("li");
 const input=document.createElement("input")
 // Add classes
 container.classList.add("container");
 navbar.classList.add("navbar");
 product.classList.add("product");
-boxlist.append(boxitem)
+boxs
 boxs.append(boxlist)
 console.log(boxs);
 

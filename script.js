@@ -99,7 +99,11 @@ const createDivProduct = function () {
 
   product.insertAdjacentHTML("afterbegin", DivProduct);
 };
-createDivProduct();
+for (let i = 0; i < 30; i++) {
+  createDivProduct()
+  
+}
+
 
 
 // implement div product

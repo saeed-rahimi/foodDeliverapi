@@ -1,2 +1,3 @@
 "use strict"
-console.log(saeed);
+ 
+const body=document.body;const html=``

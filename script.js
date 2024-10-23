@@ -112,10 +112,11 @@ const createDivProduct = function (url,name) {
 // implement div product
 
 const generateFood = async function (foodName) {
+  let foodrand=Math.floor(Math.random() * 22) + 1
   try {
     const getfood = await fetch(
       
-    `https://foodish-api.com/images/${foodName}/${foodName}${Math.floor(Math.random() * 22) + 1}.jpg`);
+    `https://foodish-api.com/images/${foodName}/${foodName}${foodrand}.jpg`);
   
   
     createDivProduct(getfood.url,foodName)
@@ -124,4 +125,21 @@ const generateFood = async function (foodName) {
     console.error("not found");
   }
 };
-generateFood();
+
+
+// const searchInput = document.getElementById('searchInput');
+//         const products = document.querySelectorAll('.product');
+
+//         input.addEventListener('input', function() {
+//             const searchValue = searchInput.value.toLowerCase(); 
+//             product.forEach(product => {
+//                 const productName = product.textContent.toLowerCase(); 
+
+                
+//                 if (productName.includes(input)) {
+//                     product.classList.add('visible');
+//                 } else {
+//                     product.classList.remove('visible'); 
+//                 }
+//             });
+//         });

@@ -99,7 +99,7 @@ const createDivProduct = function (url) {
 
   const DivProduct = `  <div style="display: flex; gap: 10px; flex-wrap: wrap ; margin: 20px;">
       <div style="text-align: center">
-        <img src="${url}" style="width: 100px" alt="" />
+        <img src="${url}" style="width: 100px;height: 200px;" alt="" />
         <h3>name</h3>
         
       </div>

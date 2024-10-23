@@ -139,8 +139,6 @@ input.addEventListener("input", function () {
 function renderFoods(foods) {
   product.innerHTML = "";
   foods.forEach((food) => {
-    console.log(`${food} salamm`);
-
     createDivProduct(food.img, food.name);
   });
 }

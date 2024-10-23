@@ -83,14 +83,23 @@ product.style.padding = "20px";
 
 
 
+document.querySelectorAll('a').forEach(item => {
+  item.addEventListener('click', (event) => {
+    event.preventDefault(); 
+    const clickedFood = item.textContent;
+    
+    generateFood(clickedFood);
+  });
+});
+
 
 // implement div product
 
-const createDivProduct = function () {
+const createDivProduct = function (url) {
 
   const DivProduct = `  <div style="display: flex; gap: 10px; flex-wrap: wrap ; margin: 20px;">
       <div style="text-align: center">
-        <img src="food.JPG" style="width: 100px" alt="" />
+        <img src="${url}" style="width: 100px" alt="" />
         <h3>name</h3>
         
       </div>
@@ -99,22 +108,24 @@ const createDivProduct = function () {
 
   product.insertAdjacentHTML("afterbegin", DivProduct);
 };
-for (let i = 0; i < 30; i++) {
-  createDivProduct()
+
+ 
   
-}
+
 
 
 
 // implement div product
 
-const generateFood = async function () {
+const generateFood = async function (foodName) {
   try {
     const getfood = await fetch(
-      "https://foodish-api.com/images/dessert/dessert35.jpg"
-    );
-    const textgetFood = getfood.json();
-    console.log(getfood);
+    `https://foodish-api.com/images/${foodName}/${foodName}5.jpg`);
+  
+   
+   console.log( getfood.url);
+    createDivProduct(getfood.url)
+    
   } catch {
     console.error("not found");
   }

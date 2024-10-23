@@ -95,12 +95,12 @@ document.querySelectorAll('a').forEach(item => {
 
 // implement div product
 
-const createDivProduct = function (url) {
+const createDivProduct = function (url,name) {
 
   const DivProduct = `  <div style="display: flex; gap: 10px; flex-wrap: wrap ; margin: 20px;">
       <div style="text-align: center">
-        <img src="${url}" style="width: 100px;height: 200px;" alt="" />
-        <h3>name</h3>
+        <img src="${url}" style="width: 100px;height: 100px;" alt="" />
+        <h3>${name}</h3>
         
       </div>
      
@@ -109,22 +109,16 @@ const createDivProduct = function (url) {
   product.insertAdjacentHTML("afterbegin", DivProduct);
 };
 
- 
-  
-
-
-
-
 // implement div product
 
 const generateFood = async function (foodName) {
   try {
     const getfood = await fetch(
-    `https://foodish-api.com/images/${foodName}/${foodName}5.jpg`);
+      
+    `https://foodish-api.com/images/${foodName}/${foodName}${Math.floor(Math.random() * 22) + 1}.jpg`);
   
-   
-   console.log( getfood.url);
-    createDivProduct(getfood.url)
+  
+    createDivProduct(getfood.url,foodName)
     
   } catch {
     console.error("not found");

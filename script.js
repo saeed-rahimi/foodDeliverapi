@@ -80,23 +80,21 @@ product.style.gap = "10px";
 product.style.flexWrap = "wrap";
 product.style.padding = "20px";
 
+let selectedFoods = [];
 
-
-
-document.querySelectorAll('a').forEach(item => {
-  item.addEventListener('click', (event) => {
-    event.preventDefault(); 
+document.querySelectorAll("a").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    event.preventDefault();
     const clickedFood = item.textContent;
-    
+
     generateFood(clickedFood);
+    console.log(selectedFoods);
   });
 });
 
-
 // implement div product
 
-const createDivProduct = function (url,name) {
-
+const createDivProduct = function (url, name) {
   const DivProduct = `  <div style="display: flex; gap: 10px; flex-wrap: wrap ; margin: 20px;">
       <div style="text-align: center">
         <img src="${url}" style="width: 100px;height: 100px;" alt="" />
@@ -112,34 +110,37 @@ const createDivProduct = function (url,name) {
 // implement div product
 
 const generateFood = async function (foodName) {
-  let foodrand=Math.floor(Math.random() * 22) + 1
+  let foodrand = Math.floor(Math.random() * 22) + 1;
   try {
     const getfood = await fetch(
-      
-    `https://foodish-api.com/images/${foodName}/${foodName}${foodrand}.jpg`);
-  
-  
-    createDivProduct(getfood.url,foodName)
-    
+      `https://foodish-api.com/images/${foodName}/${foodName}${foodrand}.jpg`
+    );
+
+    selectedFoods.push({
+      name: foodName,
+      img: getfood.url,
+    });
+    createDivProduct(getfood.url, foodName);
   } catch {
     console.error("not found");
   }
 };
 
+input.addEventListener("input", function () {
+  const searchValue = input.value.toLowerCase();
 
-// const searchInput = document.getElementById('searchInput');
-//         const products = document.querySelectorAll('.product');
+  const filteredFoods = selectedFoods.filter((food) =>
+    food.name.toLowerCase().includes(searchValue)
+  );
 
-//         input.addEventListener('input', function() {
-//             const searchValue = searchInput.value.toLowerCase(); 
-//             product.forEach(product => {
-//                 const productName = product.textContent.toLowerCase(); 
+  renderFoods(filteredFoods);
+});
 
-                
-//                 if (productName.includes(input)) {
-//                     product.classList.add('visible');
-//                 } else {
-//                     product.classList.remove('visible'); 
-//                 }
-//             });
-//         });
+function renderFoods(foods) {
+  product.innerHTML = "";
+  foods.forEach((food) => {
+    console.log(`${food} salamm`);
+
+    createDivProduct(food.img, food.name);
+  });
+}
